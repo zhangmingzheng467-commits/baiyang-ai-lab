@@ -93,7 +93,7 @@
       apikey: cloudConfig.anonKey,
       "Content-Type": "application/json"
     };
-    if (token) headers.Authorization = `Bearer ${token}`;
+    headers.Authorization = `Bearer ${token || cloudConfig.anonKey}`;
     return headers;
   }
 
@@ -297,6 +297,7 @@
         method: "POST",
         headers: {
           apikey: cloudConfig.anonKey,
+          Authorization: `Bearer ${cloudConfig.anonKey}`,
           "Content-Type": "image/jpeg",
           "x-upsert": "false"
         },
@@ -464,7 +465,8 @@
       adminUnlocked = true;
       renderAdmin();
     } catch (loginError) {
-      error.textContent = `登录失败：${loginError.message}`;
+      const message = loginError.name === "AbortError" ? "连接 Supabase 超时，请检查网络或稍后再试。" : loginError.message;
+      error.textContent = `登录失败：${message}`;
     }
   });
   $("[data-admin-logout]").addEventListener("click",()=>{
