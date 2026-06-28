@@ -88,12 +88,13 @@
     return row;
   }
 
-  function cloudHeaders(token = cloudConfig.anonKey) {
-    return {
+  function cloudHeaders(token = null) {
+    const headers = {
       apikey: cloudConfig.anonKey,
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     };
+    if (token) headers.Authorization = `Bearer ${token}`;
+    return headers;
   }
 
   function fetchWithTimeout(url, options = {}, timeout = 30000) {
@@ -296,7 +297,6 @@
         method: "POST",
         headers: {
           apikey: cloudConfig.anonKey,
-          Authorization: `Bearer ${cloudConfig.anonKey}`,
           "Content-Type": "image/jpeg",
           "x-upsert": "false"
         },
