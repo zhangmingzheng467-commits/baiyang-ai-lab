@@ -96,8 +96,14 @@
     };
   }
 
+  function fetchWithTimeout(url, options = {}, timeout = 9000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    return fetch(url, {...options, signal: controller.signal}).finally(() => clearTimeout(timer));
+  }
+
   async function cloudRequest(path, options = {}) {
-    const response = await fetch(`${cloudConfig.url.replace(/\/$/, "")}${path}`, options);
+    const response = await fetchWithTimeout(`${cloudConfig.url.replace(/\/$/, "")}${path}`, options);
     if (!response.ok) {
       const text = await response.text();
       throw new Error(text || response.statusText);
@@ -124,10 +130,15 @@
   async function loadWorks(force = false) {
     if (!cloudEnabled) return getLocalWorks();
     if (worksCache && !force) return worksCache;
-    const rows = await cloudRequest("/rest/v1/works_public?select=*&status=eq.approved&order=created_at.desc", {
-      headers: cloudHeaders()
-    });
-    worksCache = rows.map(toCamel);
+    try {
+      const rows = await cloudRequest("/rest/v1/works_public?select=*&status=eq.approved&order=created_at.desc", {
+        headers: cloudHeaders()
+      });
+      worksCache = rows.map(toCamel);
+    } catch (error) {
+      console.warn("Cloud works unavailable, falling back to local works.", error);
+      worksCache = getLocalWorks();
+    }
     return worksCache;
   }
 
@@ -167,7 +178,7 @@
         <div class="work-card-content"><div class="work-card-meta"><span>${String(index + 1).padStart(2,"0")} / ${escapeHTML(work.type)}</span><span>${escapeHTML(work.city || "贵阳")}</span></div><h3>${escapeHTML(work.title)}</h3><p>${escapeHTML(work.summary)}</p><div class="work-tools">${(work.tools || []).map(t => `<span>${escapeHTML(t)}</span>`).join("")}</div></div>
       </article>`).join("");
     } catch (error) {
-      gallery.innerHTML = `<div class="gallery-empty"><h3>云端作品读取失败</h3><p>${escapeHTML(error.message)}</p></div>`;
+      gallery.innerHTML = `<div class="gallery-empty"><h3>作品读取失败</h3><p>${escapeHTML(error.message)}</p></div>`;
       empty.hidden = true;
     }
   }
@@ -281,7 +292,7 @@
     const urls = [];
     for (let index = 0; index < uploadedFiles.length; index += 1) {
       const path = `works/${Date.now()}-${index}.jpg`;
-      const response = await fetch(`${cloudConfig.url.replace(/\/$/, "")}/storage/v1/object/${bucketName}/${path}`, {
+      const response = await fetchWithTimeout(`${cloudConfig.url.replace(/\/$/, "")}/storage/v1/object/${bucketName}/${path}`, {
         method: "POST",
         headers: {
           apikey: cloudConfig.anonKey,

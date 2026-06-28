@@ -1,5 +1,5 @@
 -- Baiyang AI Lab cloud submission setup
--- 1. Replace ADMIN_EMAIL below with your Supabase Auth admin email.
+-- Admin email: zhangmingzheng467@gmail.com
 -- 2. Run this in Supabase SQL Editor.
 -- 3. Create an Auth user with the same email/password for admin review.
 
@@ -58,15 +58,15 @@ create policy "Admin can read submissions"
 on public.work_submissions
 for select
 to authenticated
-using (auth.jwt() ->> 'email' = 'ADMIN_EMAIL');
+using (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com');
 
 drop policy if exists "Admin can update submissions" on public.work_submissions;
 create policy "Admin can update submissions"
 on public.work_submissions
 for update
 to authenticated
-using (auth.jwt() ->> 'email' = 'ADMIN_EMAIL')
-with check (auth.jwt() ->> 'email' = 'ADMIN_EMAIL');
+using (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com')
+with check (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com');
 
 drop policy if exists "Anyone can read approved public works" on public.works_public;
 create policy "Anyone can read approved public works"
@@ -80,22 +80,22 @@ create policy "Admin can publish public works"
 on public.works_public
 for insert
 to authenticated
-with check (auth.jwt() ->> 'email' = 'ADMIN_EMAIL');
+with check (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com');
 
 drop policy if exists "Admin can update public works" on public.works_public;
 create policy "Admin can update public works"
 on public.works_public
 for update
 to authenticated
-using (auth.jwt() ->> 'email' = 'ADMIN_EMAIL')
-with check (auth.jwt() ->> 'email' = 'ADMIN_EMAIL');
+using (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com')
+with check (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com');
 
 drop policy if exists "Admin can remove public works" on public.works_public;
 create policy "Admin can remove public works"
 on public.works_public
 for delete
 to authenticated
-using (auth.jwt() ->> 'email' = 'ADMIN_EMAIL');
+using (auth.jwt() ->> 'email' = 'zhangmingzheng467@gmail.com');
 
 insert into storage.buckets (id, name, public)
 values ('work-images', 'work-images', true)
