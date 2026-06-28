@@ -227,7 +227,7 @@
         <button class="back-link" type="button" data-route="home">← 返回首页</button>
         <div class="admin-login" data-admin-login>
           <span class="admin-seal">审</span><p class="section-index">PRIVATE / REVIEW</p><h1>站长审核台</h1><p>这里放的是投稿者交给你的作品和联系方式。</p>
-          <form data-admin-login-form><label class="field"><span>访问密码</span><input name="password" type="password" autocomplete="current-password" placeholder="请输入管理密码" required></label><button class="button button-dark" type="submit">进入审核台</button><div class="form-error" data-admin-error></div></form>
+          <form data-admin-login-form><label class="field"><span>管理员邮箱 <small>云端模式填写</small></span><input name="email" type="email" autocomplete="email" placeholder="你的 Supabase 登录邮箱"></label><label class="field"><span>访问密码</span><input name="password" type="password" autocomplete="current-password" placeholder="请输入管理密码" required></label><button class="button button-dark" type="submit">进入审核台</button><div class="form-error" data-admin-error></div></form>
         </div>
         <div class="admin-dashboard" data-admin-dashboard hidden>
           <div class="admin-top"><div><p class="section-index">PRIVATE / REVIEW</p><h1>投稿审核</h1></div><button class="text-action" type="button" data-admin-logout>退出</button></div>
@@ -247,6 +247,7 @@
     <button type="button" aria-label="关闭" data-close-qr>×</button><div class="qr-modal-card"><p>AI 主理人 · 贵阳</p><div class="qr-placeholder large"><div class="qr-grid"></div><span>二维码<br>待替换</span></div><h3>扫码加入交流群</h3><small>此处为占位，替换成实际二维码即可</small></div>
   </div>
   <div class="toast" data-toast role="status"></div>
+  <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
