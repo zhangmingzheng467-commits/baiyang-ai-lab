@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="白杨的 AI 实验场：记录贵阳本地 AI 玩家正在做出来的真实作品。">
+  <meta name="theme-color" content="#f3eee4">
+  <title>白杨的 AI 实验场</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header" data-header>
+    <nav class="nav shell" aria-label="主导航">
+      <a class="brand" href="#home" aria-label="回到首页">
+        <span class="brand-seal">白</span>
+        <span class="brand-copy"><b>白杨</b><small>AI LAB · GUIYANG</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="打开导航" data-nav-toggle><i></i><i></i></button>
+      <div class="nav-links" data-nav-links>
+        <a href="#ai-pages">AI模块</a>
+        <a href="#about">关于</a>
+        <a href="#gallery">作品墙</a>
+        <a href="#community">社群</a>
+        <button class="nav-submit" type="button" data-route="submit">把作品丢进来 <span>↗</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    <div class="view is-active" data-view="home">
+      <section class="hero" id="home">
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <svg class="hero-mountain" viewBox="0 0 1440 550" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 450 C130 420 194 322 320 370 C430 412 492 233 610 304 C716 368 773 190 900 274 C1024 355 1092 246 1210 308 C1294 352 1355 286 1440 262 L1440 550 L0 550Z" fill="currentColor" opacity=".08"/>
+          <path d="M0 474 C174 394 262 455 388 390 C526 319 609 430 744 349 C888 264 1022 414 1140 342 C1251 275 1340 332 1440 302" fill="none" stroke="currentColor" stroke-width="2" opacity=".17"/>
+        </svg>
+        <div class="shell hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span></span> 贵阳 · AI 玩家聚集地</p>
+            <h1>让想法，<br><em>先长出来。</em></h1>
+            <p class="hero-lead">我是白杨，一名青年自媒体创业者。这里不展示完美答案，只收集那些已经动手、正在发生的 AI 实验。</p>
+            <div class="hero-actions">
+              <a class="button button-dark" href="#gallery">看看大家做了什么 <span>↓</span></a>
+              <button class="text-action" type="button" data-route="submit">我也有个东西 <span>↗</span></button>
+            </div>
+          </div>
+          <div class="hero-art reveal" aria-hidden="true">
+            <div class="sun"></div>
+            <div class="ink-figure">
+              <div class="figure-head"></div>
+              <div class="figure-body"></div>
+              <div class="figure-laptop"><span>AI</span></div>
+            </div>
+            <div class="floating-note note-a">想法<br><b>01</b></div>
+            <div class="floating-note note-b">正在发生<br><b>NOW</b></div>
+            <span class="brush-word">造</span>
+          </div>
+        </div>
+        <div class="hero-scroll"><span>SCROLL TO EXPLORE</span><i></i></div>
+      </section>
+
+      <section class="ai-pages-section" id="ai-pages">
+        <div class="shell">
+          <div class="ai-pages-head reveal">
+            <p class="section-index">AI LIFE / PAGES</p>
+            <h2>三条正在展开的<br><em>人生实验线</em></h2>
+            <p>它们分别记录我是谁、我正在如何用 AI 生活与创作，以及我未来可以为你提供什么帮助。</p>
+          </div>
+          <div class="ai-pages-grid">
+            <article class="ai-page-card reveal">
+              <span>01</span>
+              <h3>AI人生实验记录者</h3>
+              <p>记录一个普通人如何把 AI 放进日常选择、内容创作与创业判断里。</p>
+              <a href="#about">了解我 <i>↗</i></a>
+            </article>
+            <article class="ai-page-card reveal">
+              <span>02</span>
+              <h3>AI人生实验日志</h3>
+              <p>整理真实发生的实验、复盘、工具流和阶段性成果。</p>
+              <a href="#gallery">查看日志 <i>↗</i></a>
+            </article>
+            <article class="ai-page-card reveal">
+              <span>03</span>
+              <h3>我可以帮你做什么</h3>
+              <p>未来用于承接咨询、内容共创、AI 工作流搭建与本地服务合作。</p>
+              <a href="#community">联系交流 <i>↗</i></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="shell about-grid">
+          <div class="about-mark reveal">
+            <span class="vertical-copy">不做旁观者</span>
+            <div class="big-number">22<small>岁</small></div>
+            <p>生于贵阳<br>正在创业</p>
+          </div>
+          <div class="about-content reveal">
+            <p class="section-index">01 / ABOUT</p>
+            <h2>我相信，真正有趣的人<br>都在偷偷<em>做点什么。</em></h2>
+            <div class="about-columns">
+              <p>白杨，坐标贵阳。做自媒体、研究内容，也把 AI 当作一把趁手的新工具。比起讨论它会改变什么，我更在意今天能拿它做出什么。</p>
+              <p>所以有了这个网站：一半是我的个人记录，一半留给身边同样不安分的创作者。工具不重要，做出来的东西才重要。</p>
+            </div>
+            <div class="identity-tags"><span>内容创作者</span><span>独立创业者</span><span>AI 实践者</span><span>贵阳</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-index light">02 / GALLERY</p>
+              <h2>正在发生的<br><em>AI 实验</em></h2>
+            </div>
+            <div class="heading-aside">
+              <p>贵阳本地 AI 玩家们的真实产出。<br>工具不重要，做出来的东西才重要。</p>
+              <div class="filter-row" data-filters></div>
+            </div>
+          </div>
+          <div class="works-grid" data-gallery></div>
+          <div class="gallery-empty" data-gallery-empty hidden>
+            <span>〇</span><h3>还没有作品上墙</h3><p>要不要第一个来？</p>
+          </div>
+          <div class="gallery-footer reveal">
+            <div><span class="red-dot"></span><p><b>你的作品也可以在这里</b><br>不要求多完美，能跑起来、有想法就行。</p></div>
+            <button class="button button-paper" type="button" data-route="submit">把你的作品丢进来 <span>↗</span></button>
+          </div>
+          <p class="cta-note">审核后会上墙，顺便加你一个好友</p>
+        </div>
+      </section>
+
+      <section class="belief-section">
+        <div class="shell belief-grid">
+          <p class="section-index">03 / BELIEFS</p>
+          <div class="belief-lines">
+            <p class="reveal"><span>01</span>慢即是快。</p>
+            <p class="reveal"><span>02</span>先立己，再借势。</p>
+            <p class="reveal"><span>03</span>精准胜于广泛。</p>
+          </div>
+          <span class="belief-seal">行<br>胜<br>于<br>言</span>
+        </div>
+      </section>
+
+      <section class="community-section" id="community">
+        <div class="shell community-card reveal">
+          <div class="community-copy">
+            <p class="section-index light">04 / COMMUNITY</p>
+            <h2>AI 主理人，<br><em>正在聚集。</em></h2>
+            <p>一个不定期产出真实 AI 实验项目的小圈子，从这个网站开始。</p>
+            <button class="button button-light" type="button" data-open-qr>扫码加入 <span>→</span></button>
+          </div>
+          <div class="qr-stage" data-open-qr role="button" tabindex="0" aria-label="查看社群二维码">
+            <div class="qr-placeholder"><div class="qr-grid"></div><span>二维码<br>待替换</span></div>
+            <p>WECHAT GROUP<br><small>扫一扫，认识点有趣的人</small></p>
+          </div>
+          <div class="community-rings" aria-hidden="true"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="view" data-view="submit">
+      <section class="inner-hero submit-hero">
+        <div class="shell inner-head">
+          <button class="back-link" type="button" data-route="home">← 返回实验场</button>
+          <p class="eyebrow"><span></span> SUBMIT YOUR WORK</p>
+          <h1>投稿你的<br><em>AI 作品</em></h1>
+          <p>不要求多完美，能跑起来、有想法就行。<br>提交后我会找你聊两句，顺便拉你进圈子。</p>
+        </div>
+      </section>
+      <section class="form-section">
+        <form class="submission-form shell" data-submit-form novalidate>
+          <div class="form-block">
+            <div class="form-number">壹</div>
+            <div class="form-body">
+              <div class="form-title"><p>WORK INFO</p><h2>作品信息</h2></div>
+              <div class="field-grid">
+                <label class="field"><span>作品名称 <i>*</i></span><input name="title" maxlength="40" placeholder="给它一个响亮的名字" required></label>
+                <label class="field"><span>作品类型 <i>*</i></span><select name="type" required><option value="">请选择</option><option>网站/小程序</option><option>视频内容</option><option>设计图片</option><option>AI工具/Prompt</option><option>写作/文案</option><option>其他</option></select></label>
+                <label class="field field-wide"><span>作品链接 <small>选填</small></span><input name="url" type="url" placeholder="https://"></label>
+                <label class="field field-wide"><span>一句话介绍 <i>*</i> <small><b data-count="summary">0</b>/80</small></span><input name="summary" maxlength="80" placeholder="用一句话说清楚，它解决了什么或有什么意思" required></label>
+                <label class="field field-wide"><span>详细介绍 <small>选填</small></span><textarea name="description" rows="6" placeholder="用了什么 AI 工具、为什么想做、踩过什么坑……都可以聊聊"></textarea></label>
+                <fieldset class="field field-wide"><legend>使用的 AI 工具 <small>可多选</small></legend><div class="tool-options" data-tools><label><input type="checkbox" value="Claude"><span>Claude</span></label><label><input type="checkbox" value="ChatGPT"><span>ChatGPT</span></label><label><input type="checkbox" value="Codex"><span>Codex</span></label><label><input type="checkbox" value="Midjourney"><span>Midjourney</span></label><label><input type="checkbox" value="即梦"><span>即梦</span></label><label><input type="checkbox" value="其他"><span>其他</span></label></div><input class="tool-custom" name="customTool" placeholder="还有别的？输入工具名称"></fieldset>
+                <div class="field field-wide"><span>作品截图 / 封面图 <i>*</i> <small>最多 3 张，上传时会自动压缩</small></span><label class="upload-zone" data-upload-zone><input name="images" type="file" accept="image/*" multiple required><span class="upload-plus">＋</span><b>点击或拖拽上传图片</b><small>JPG / PNG / WEBP · 每张建议小于 10MB</small></label><div class="upload-previews" data-upload-previews></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-block">
+            <div class="form-number">贰</div>
+            <div class="form-body">
+              <div class="form-title"><p>ABOUT YOU</p><h2>关于你</h2><span>这部分不会公开，微信仅用于审核后联系。</span></div>
+              <div class="field-grid">
+                <label class="field"><span>称呼 / 昵称 <i>*</i></span><input name="author" maxlength="30" placeholder="大家怎么称呼你" required></label>
+                <label class="field"><span>微信号 <i>*</i> <small>不公开</small></span><input name="wechat" maxlength="50" placeholder="审核后联系你" required></label>
+                <label class="field"><span>所在城市 <small>选填</small></span><input name="city" maxlength="30" value="贵阳"></label>
+                <label class="field"><span>一句话自我介绍 <small><b data-count="bio">0</b>/50</small></span><input name="bio" maxlength="50" placeholder="比如：做短视频的，平时用 Claude 写脚本"></label>
+                <fieldset class="field field-wide"><legend>是否愿意被拉进 AI 主理人交流群？ <i>*</i></legend><div class="radio-cards"><label><input type="radio" name="joinGroup" value="愿意" required><span><b>愿意</b><small>有新实验、有意思的人，喊我</small></span></label><label><input type="radio" name="joinGroup" value="先看看再说" required><span><b>先看看再说</b><small>先保持联系，熟悉之后再决定</small></span></label></div></fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="form-error" data-form-error role="alert"></div>
+          <div class="form-submit-row"><p>点击提交即表示你同意作品封面与介绍展示在本站。<br>微信号不会公开。</p><button class="button button-dark submit-button" type="submit">确认丢进来 <span>↗</span></button></div>
+        </form>
+      </section>
+    </div>
+
+    <div class="view" data-view="success">
+      <section class="success-page shell">
+        <div class="success-seal">收</div><p class="eyebrow"><span></span> SUBMISSION RECEIVED</p><h1>收到了。</h1><p>我会在认真看完之后联系你，一般 1–3 天内会有回复。<br>如果作品被选中上墙，记得查看微信消息。</p><button class="button button-dark" type="button" data-route="home">回到实验场 <span>→</span></button>
+      </section>
+    </div>
+
+    <div class="view" data-view="detail">
+      <div data-detail></div>
+    </div>
+
+    <div class="view" data-view="admin">
+      <section class="admin-page shell">
+        <button class="back-link" type="button" data-route="home">← 返回首页</button>
+        <div class="admin-login" data-admin-login>
+          <span class="admin-seal">审</span><p class="section-index">PRIVATE / REVIEW</p><h1>站长审核台</h1><p>这里放的是投稿者交给你的作品和联系方式。</p>
+          <form data-admin-login-form><label class="field"><span>访问密码</span><input name="password" type="password" autocomplete="current-password" placeholder="请输入管理密码" required></label><button class="button button-dark" type="submit">进入审核台</button><div class="form-error" data-admin-error></div></form>
+        </div>
+        <div class="admin-dashboard" data-admin-dashboard hidden>
+          <div class="admin-top"><div><p class="section-index">PRIVATE / REVIEW</p><h1>投稿审核</h1></div><button class="text-action" type="button" data-admin-logout>退出</button></div>
+          <div class="stats-row" data-admin-stats></div>
+          <div class="admin-controls"><div class="filter-row" data-admin-filters><button class="is-active" data-status="pending">待审核</button><button data-status="approved">已上墙</button><button data-status="rejected">未通过</button><button data-status="all">全部</button></div><label>入群意愿<select data-join-filter><option value="all">全部</option><option value="愿意">愿意</option><option value="先看看再说">先看看再说</option></select></label></div>
+          <div class="admin-list" data-admin-list></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid"><div><span class="brand-seal">白</span><p>让想法，先长出来。</p></div><p>© 2026 张明政 / Baiyang<br>Guiyang · China</p><button type="button" data-route="admin">站长入口</button></div>
+  </footer>
+
+  <div class="qr-modal" data-qr-modal aria-hidden="true">
+    <button type="button" aria-label="关闭" data-close-qr>×</button><div class="qr-modal-card"><p>AI 主理人 · 贵阳</p><div class="qr-placeholder large"><div class="qr-grid"></div><span>二维码<br>待替换</span></div><h3>扫码加入交流群</h3><small>此处为占位，替换成实际二维码即可</small></div>
+  </div>
+  <div class="toast" data-toast role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
