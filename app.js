@@ -97,6 +97,13 @@
     return headers;
   }
 
+  function cloudAuthHeaders() {
+    return {
+      apikey: cloudConfig.anonKey,
+      "Content-Type": "application/json"
+    };
+  }
+
   function fetchWithTimeout(url, options = {}, timeout = 30000) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeout);
@@ -104,7 +111,8 @@
   }
 
   async function cloudRequest(path, options = {}) {
-    const response = await fetchWithTimeout(`${cloudConfig.url.replace(/\/$/, "")}${path}`, options);
+    const {timeout, ...fetchOptions} = options;
+    const response = await fetchWithTimeout(`${cloudConfig.url.replace(/\/$/, "")}${path}`, fetchOptions, timeout || 30000);
     if (!response.ok) {
       const text = await response.text();
       throw new Error(text || response.statusText);
@@ -347,8 +355,9 @@
   async function cloudAdminLogin(email, password) {
     const result = await cloudRequest("/auth/v1/token?grant_type=password", {
       method: "POST",
-      headers: cloudHeaders(),
-      body: JSON.stringify({email, password})
+      headers: cloudAuthHeaders(),
+      body: JSON.stringify({email, password}),
+      timeout: 12000
     });
     sessionStorage.setItem(ADMIN_TOKEN_KEY, result.access_token);
     sessionStorage.setItem(ADMIN_EMAIL_KEY, email);
@@ -479,7 +488,9 @@
       await renderAdmin();
       $("[data-admin-dashboard]").scrollIntoView({block: "start"});
     } catch (loginError) {
-      const message = loginError.name === "AbortError" ? "连接 Supabase 超时，请检查网络或稍后再试。" : loginError.message;
+      const message = loginError.name === "AbortError"
+        ? "浏览器连接 Supabase 超时。账号密码没问题，建议先关闭翻译/插件，或换一个浏览器再试。"
+        : loginError.message;
       error.textContent = `登录失败：${message}`;
       submitButton.disabled = false;
       submitButton.textContent = submitText;
