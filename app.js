@@ -448,25 +448,41 @@
   }));
   $("[data-admin-login-form]").addEventListener("submit", async event => {
     event.preventDefault();
+    const form = event.currentTarget;
     const data = new FormData(event.currentTarget);
     const error = $("[data-admin-error]");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitText = submitButton.textContent;
     error.textContent = "";
+    submitButton.disabled = true;
+    submitButton.textContent = "正在进入审核台...";
     try {
       if (cloudEnabled) {
         const email = data.get("email").trim();
-        if (!email) { error.textContent = "云端审核需要填写管理员邮箱。"; return; }
+        if (!email) {
+          error.textContent = "云端审核需要填写管理员邮箱。";
+          submitButton.disabled = false;
+          submitButton.textContent = submitText;
+          return;
+        }
         await cloudAdminLogin(email, data.get("password"));
       } else if (data.get("password") !== LOCAL_ADMIN_PASSWORD) {
         error.textContent = "密码不对，再想想。";
+        submitButton.disabled = false;
+        submitButton.textContent = submitText;
         return;
       } else {
         sessionStorage.setItem("baiyang-admin","yes");
       }
       adminUnlocked = true;
-      renderAdmin();
+      if (location.hash !== "#admin") history.replaceState(null, "", "#admin");
+      await renderAdmin();
+      $("[data-admin-dashboard]").scrollIntoView({block: "start"});
     } catch (loginError) {
       const message = loginError.name === "AbortError" ? "连接 Supabase 超时，请检查网络或稍后再试。" : loginError.message;
       error.textContent = `登录失败：${message}`;
+      submitButton.disabled = false;
+      submitButton.textContent = submitText;
     }
   });
   $("[data-admin-logout]").addEventListener("click",()=>{
