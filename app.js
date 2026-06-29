@@ -204,7 +204,7 @@
   function routeFromHash() {
     const hash = location.hash.replace(/^#/, "");
     if (hash.startsWith("work/")) return setView("detail", {id:decodeURIComponent(hash.slice(5)),instant:true});
-    if (["submit","success","admin"].includes(hash)) return setView(hash, {instant:true});
+    if (["submit","success","admin","ai-recorder","ai-log","ai-services"].includes(hash)) return setView(hash, {instant:true});
     setView("home", {instant:true});
     if (hash && !["home"].includes(hash)) setTimeout(() => document.getElementById(hash)?.scrollIntoView(), 40);
   }
