@@ -117,8 +117,9 @@
       const text = await response.text();
       throw new Error(text || response.statusText);
     }
-    if (response.status === 204) return null;
-    return response.json();
+    const text = await response.text();
+    if (!text) return null;
+    return JSON.parse(text);
   }
 
   function getLocalWorks() {
@@ -311,7 +312,10 @@
         },
         body: uploadedFiles[index]
       });
-      if (!response.ok) throw new Error(await response.text());
+      if (!response.ok) {
+        const message = await response.text();
+        throw new Error(message || "图片上传失败，请稍后再试。");
+      }
       urls.push(`${cloudConfig.url.replace(/\/$/, "")}/storage/v1/object/public/${bucketName}/${path}`);
     }
     return urls;
